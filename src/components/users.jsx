@@ -20,15 +20,16 @@ const Users = () => {
     return 'badge m-1 bg-' + color
   }
 
-  if (!users.length) {
-    return <span className="badge bg-danger fs-4">Никто с тобой не тусанет</span>
-  } else {
     return (
       <>
-        <span className="badge bg-primary fs-4">
-          {users.length} {renderPhrase(users.length)} тусанет с тобой сегодня
+        <span className={"badge bg-" + (users.length ? "primary" : "danger") + " fs-4"}>
+          {users.length
+            ? `${users.length} ${renderPhrase(users.length)} тусанет с тобой сегодня`
+            : 'Никто с тобой не тусанет'          
+          } 
         </span>
-        <table className="table">
+        {users.length > 0 && (
+          <table className="table">
           <thead>
             <tr>
               <th scope="col">Имя</th>
@@ -62,9 +63,9 @@ const Users = () => {
             ))}
           </tbody>
         </table>
+        )}        
       </>
     )
-  }
 }
 
 export default Users
