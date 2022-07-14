@@ -1,19 +1,19 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import api from '../api'
 
 const Users = () => {
   const [users, setUsers] = useState(api.users.fetchAll())
 
-  console.log('users->', users)
-
   const handleDelete = (userId) => {
-    console.log('Delete ->', userId)
     setUsers((prevState) => prevState.filter((user) => user._id !== userId))
   }
 
   const renderPhrase = (num) => {
-    return num > 1 && num < 5 ? 'человека' : 'человек'
+    const lastOne = Number(num.toString().slice(-1))
+    if (num > 4 && num < 15) return 'человек'
+    if ([2, 3, 4].indexOf(lastOne) >= 0) return 'человека'
+    if (lastOne === 1) return 'человек'
+    return 'человек'
   }
 
   const getBadgeClasses = (color) => {
@@ -36,7 +36,7 @@ const Users = () => {
               <th scope="col">Профессия</th>
               <th scope="col">Встретился, раз</th>
               <th scope="col">Оценка</th>
-              <th scope="col"></th>
+              <th />
             </tr>
           </thead>
           <tbody>
