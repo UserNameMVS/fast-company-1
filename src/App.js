@@ -5,10 +5,10 @@ import api from './api'
 
 const App = () => {
   const [users, setUsers] = useState(api.users.fetchAll())
-  const handleDelete = () => {
+  const handleDelete = () => { // В параметрах должен быть userId
   // const handleDelete = (userId) => {
     console.log('deLLLete');
-    // setUsers((prevState) => prevState.filter((user) => user._id !== userId))
+    // setUsers((prevState) => prevState.filter((user) => user._id !== userId)) //Расскоментируй строку
   }
   const handleToggleBookMark = (id) => {}
 
