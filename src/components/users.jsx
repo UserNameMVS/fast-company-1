@@ -3,10 +3,12 @@ import api from '../api'
 
 const Users = () => {
   const [users, setUsers] = useState(api.users.fetchAll())
-
-  const handleDelete = (userId) => {
-    setUsers((prevState) => prevState.filter((user) => user._id !== userId))
-  }
+  
+  
+// Удалить
+//   const handleDelete = (userId) => {
+//     setUsers((prevState) => prevState.filter((user) => user._id !== userId))
+//   }
 
   const renderPhrase = (num) => {
     const lastOne = Number(num.toString().slice(-1))
